@@ -8,4 +8,6 @@ export default defineConfig({
   resolve: {
     alias: { "@": fileURLToPath(new URL(".", import.meta.url)) },
   },
+  server: { host: true, allowedHosts: true },
+  preview: { host: true, allowedHosts: true },
 });
