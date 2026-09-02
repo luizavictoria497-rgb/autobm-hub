@@ -1,5 +1,5 @@
 import { useEffect, type ReactNode } from "react";
-import { MessageCircle as X } from "lucide-react";
+import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ModalProps {

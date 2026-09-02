@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import { LayoutDashboard, Building2, Users, Settings, Download, LogOut, Menu, MessageCircle as X } from "lucide-react";
+import { LayoutDashboard, Building2, Users, Settings, Download, LogOut, Menu, X } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import { PLAN_LABELS } from "@/types";
 import { cn } from "@/lib/utils";

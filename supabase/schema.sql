@@ -247,3 +247,18 @@ drop trigger if exists set_updated_at_profiles on public.profiles;
 create trigger set_updated_at_profiles
   before update on public.profiles
   for each row execute function public.set_updated_at();
+
+-- ----------------------------------------------------------------------------
+-- 8. LISTA DE ESPERA DO APP NATIVO (aviso por e-mail quando disponível)
+-- ----------------------------------------------------------------------------
+create table if not exists public.native_app_waitlist (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null unique references auth.users(id) on delete cascade,
+  created_at timestamptz not null default now()
+);
+
+alter table public.native_app_waitlist enable row level security;
+
+drop policy if exists "native_app_waitlist_all_own" on public.native_app_waitlist;
+create policy "native_app_waitlist_all_own" on public.native_app_waitlist
+  for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
